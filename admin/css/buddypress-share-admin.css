@@ -1,0 +1,78 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+#services-action {
+    text-align: center;
+}
+.add_services_btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    float: left;
+}
+.add_services_btn {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+.add_services_btn:hover {
+    background-color: #555555;
+    color: white;
+}
+p.error_service_selector{
+    color: #E35E44 !important;
+    display: none;
+}
+p.error_service_faw-icon{
+    color: #E35E44 !important;
+    display: none;
+}
+p.error_service_description{
+    color: #E35E44 !important;
+    display: none;
+}
+.bp_share_req{
+    color: #E35E44;
+}
+.service_delete_icon{
+    text-align: center;
+    cursor: pointer;
+}
+.spint_action{
+    display: none;
+}
+.service_delete {
+    display: table-cell;
+    vertical-align: middle !important;
+}
+.bp-share-column-description.desc {
+    display: table-cell;
+    vertical-align: middle;
+}
+.bp-share-title {
+    display: table-cell;
+    vertical-align: middle !important;
+}
+.widefat .bp-share-td {
+    padding: 6px 5px !important;
+}
+.bp-share-services-extra .bp_share_settings_section_callback_class {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    border-spacing: 0;
+    clear: both;
+    margin: 0;
+    padding: 8px 20px;
+}
