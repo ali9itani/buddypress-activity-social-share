@@ -1,4 +1,4 @@
-=== BuddyPress Activity Share ===
+=== BuddyPress Activity Social Share ===
 Contributors: vapvarun,wbcomdesigns
 Donate link: https://wbcomdesigns.com
 Tags: buddypress,activity,share
