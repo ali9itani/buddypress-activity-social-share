@@ -26,11 +26,11 @@ If you need additional help you can contact us for [Custom Development](https://
 
 == Frequently Asked Questions ==
 
-= Does This plugin requires BuddyPress =
-Yes, It needs you to have BuddyPress installed and activated.
+= Required Plugins =
+BuddyPress is required plugin for activity share
 
-= Where Do I Ask for support? =
-Please visit [wbcomdesigns] (http://wbcomdesigns.com/) for any query related to plugin and Buddypress.
+= Do you offer paid support and custom development? =
+Yes, we also offer paid support and customer development,Please visit [wbcomdesigns](http://wbcomdesigns.com/) for any query related to plugin and custom development.
 
 == Screenshots ==
 
