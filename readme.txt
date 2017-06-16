@@ -1,7 +1,7 @@
 === BuddyPress Activity Social Share ===
 Contributors: vapvarun,wbcomdesigns
 Donate link: https://wbcomdesigns.com
-Tags: buddypress,activity,share
+Tags: BuddyPress, activity, share, BuddyPress share, BuddyPress activity share
 Requires at least: 3.0.1
 Tested up to: 4.8
 Stable tag: 1.0.2
