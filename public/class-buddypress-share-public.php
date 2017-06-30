@@ -54,9 +54,10 @@ class Buddypress_Share_Public {
 
     /**
      * Register the stylesheets for the public-facing side of the site.
-     *
+     * @access public
      * @since    1.0.0
      */
+    
     public function enqueue_styles() {
 
         /**
@@ -76,9 +77,10 @@ class Buddypress_Share_Public {
 
     /**
      * Register the JavaScript for the public-facing side of the site.
-     *
+     * @access public
      * @since    1.0.0
      */
+    
     public function enqueue_scripts() {
 
         /**
@@ -95,6 +97,26 @@ class Buddypress_Share_Public {
         wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/buddypress-share-public.js', array('jquery'), $this->version, false);
     }
 
+    /**
+     * Display share button in front page.
+     * @access public
+     * @since    1.0.0
+     */
+    
+    public function bp_activity_share_button_dis() {	
+            if( is_user_logged_in() ) {			
+                    add_action('bp_activity_entry_meta', array( $this, 'bp_share_activity_filter' ) );
+            } else {	
+                    add_action('bp_before_activity_entry_comments', array($this,'bp_share_activity_filter') );
+            }
+    }	
+	
+    /**
+     * BP Share activity filter
+     * @access public
+     * @since    1.0.0
+     */
+    
     function bp_share_activity_filter() {
         $service = get_option('bp_share_services');
         $extra_options = get_option('bp_share_services_extra');
@@ -102,14 +124,17 @@ class Buddypress_Share_Public {
         $activity_link = bp_get_activity_thread_permalink();
         $activity_title = bp_get_activity_feed_item_title(); // use for description : bp_get_activity_feed_item_description()
         $plugin_path = plugins_url();
+            if( !is_user_logged_in() ) {	
+                    echo '<div class = "activity-meta" >';
+            }
         ?>
         <span class="bp-share-btn">
-            <a class="button item-button bp-secondary-action bp-share-button" rel="nofollow">Share</a>
+            <a class="button item-button bp-secondary-action bp-share-button" rel="nofollow"><?php _e( 'Share', BP_SHARE ); ?></a>
         </span>
 
         <div class="service-buttons <?php echo $activity_type ?>" style="display: none;">
             <?php
-            if ( ! empty($service)) {
+            if (!empty($service)) {
                 foreach ($service as $key => $value) {
                     if (isset($key) && $key == 'bp_share_facebook' && $value['chb_' . $key] == 1) {
                         echo '<a target="blank" class="bp-share" href="https://www.facebook.com/sharer/sharer.php?t=' . $activity_title . '&u=' . $activity_link . '" rel="facebook"><span class="fa-stack fa-lg"><i class="' . $value['service_icon'] . '"></i></span></a>';
@@ -145,7 +170,7 @@ class Buddypress_Share_Public {
                     }
                 }
             } else {
-                echo 'Please enable share services!';
+                _e( 'Please enable share services!', BP_SHARE );
             }
             do_action('bp_share_user_services', $services = array(), $activity_link, $activity_title);
             ?>
@@ -159,6 +184,8 @@ class Buddypress_Share_Public {
             });
         </script>
         <?php
+		if( !is_user_logged_in() ) {	
+			echo '</div>';
+		}
     }
-
 }

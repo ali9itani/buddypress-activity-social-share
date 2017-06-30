@@ -72,14 +72,14 @@ class Buddypress_Share {
      * Set the plugin name and the plugin version that can be used throughout the plugin.
      * Load the dependencies, define the locale, and set the hooks for the admin area and
      * the public-facing side of the site.
-     *
+     * @access public
      * @since    1.0.0
      */
     public function __construct() {
 
         $this->plugin_name = 'buddypress-share';
         $this->version = '1.0.0';
-        $this->plugin_basename = 'bp-share/buddypress-share.php';
+        $this->plugin_basename = 'bp-activity-social-share/buddypress-share.php';
 
         $this->load_dependencies();
         $this->set_locale();
@@ -103,6 +103,7 @@ class Buddypress_Share {
      * @since    1.0.0
      * @access   private
      */
+    
     private function load_dependencies() {
 
         /**
@@ -144,11 +145,12 @@ class Buddypress_Share {
      * @since    1.0.0
      * @access   private
      */
+    
     private function set_locale() {
 
         $plugin_i18n = new Buddypress_Share_i18n();
 
-        $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
+        $this->loader->add_action('plugins_loaded', $plugin_i18n, 'bp_share_load_plugin_textdomain');
     }
 
     /**
@@ -158,6 +160,7 @@ class Buddypress_Share {
      * @since    1.0.0
      * @access   private
      */
+    
     private function define_admin_hooks() {
         $plugin_admin = new Buddypress_Share_Admin($this->get_plugin_name(), $this->get_version());
         $plugin_admin_page = new Buddypress_Share_Options_Page($this->get_plugin_name(), $this->get_version());
@@ -187,20 +190,21 @@ class Buddypress_Share {
      * @since    1.0.0
      * @access   private
      */
+    
     private function define_public_hooks() {
-
         $plugin_public = new Buddypress_Share_Public($this->get_plugin_name(), $this->get_version());
         $plugin_options_page = new Buddypress_Share_Options_Page($this->get_plugin_name(), $this->get_version());
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-        $this->loader->add_action('bp_activity_entry_meta', $plugin_public, 'bp_share_activity_filter', 999);
+		$this->loader->add_action('bp_init', $plugin_public, 'bp_activity_share_button_dis' );	
     }
-
+	
     /**
      * Run the loader to execute all of the hooks with WordPress.
-     *
+     * @access public
      * @since    1.0.0
      */
+    
     public function run() {
         $this->loader->run();
     }
@@ -210,8 +214,10 @@ class Buddypress_Share {
      * WordPress and to define internationalization functionality.
      *
      * @since     1.0.0
+     * @access public
      * @return    string    The name of the plugin.
      */
+    
     public function get_plugin_name() {
         return $this->plugin_name;
     }
@@ -220,8 +226,10 @@ class Buddypress_Share {
      * The reference to the class that orchestrates the hooks with the plugin.
      *
      * @since     1.0.0
+     * @access public
      * @return    Buddypress_Share_Loader    Orchestrates the hooks of the plugin.
      */
+    
     public function get_loader() {
         return $this->loader;
     }
@@ -230,8 +238,10 @@ class Buddypress_Share {
      * Retrieve the version number of the plugin.
      *
      * @since     1.0.0
+     * @access public
      * @return    string    The version number of the plugin.
      */
+    
     public function get_version() {
         return $this->version;
     }

@@ -98,7 +98,7 @@ class Buddypress_Share_Admin {
     }
 
     function buddypress_share_add_settings_link($links) {
-        $settings_link = '<a href="options-general.php?page=buddypress-share">' . __('Settings') . '</a>';
+        $settings_link = '<a href="options-general.php?page=buddypress-share">' . __('Settings', BP_SHARE ) . '</a>';
         array_push($links, $settings_link);
         return $links;
     }

@@ -43,20 +43,36 @@ class Buddypress_Share_Options_Page {
      * Initialize the class and set its properties.
      *
      * @since    1.0.0
+     * @access   public  
      * @param      string    $plugin_name       The name of this plugin.
      * @param      string    $version    The version of this plugin.
      */
+    
     public function __construct($plugin_name, $version) {
 
         $this->plugin_name = $plugin_name;
         $this->version = $version;
     }
 
+    /**
+    * function for add plugin menu
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
+    
     public function bp_share_plugin_menu() {
 
         add_submenu_page('options-general.php', __('BuddyPress Share', $this->plugin_name), __('BuddyPress Share', $this->plugin_name), 'manage_options', 'buddypress-share', array($this, 'bp_share_plugin_options'));
     }
 
+    /**
+    * Intialize plugin admin settings
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
+    
     public function bp_share_settings_init() {
 
         register_setting('bp_share_services_extra', 'bp_share_services_extra');
@@ -68,6 +84,13 @@ class Buddypress_Share_Options_Page {
                 'bp_share_services_open', __('Open as popup window', $this->plugin_name), array($this, 'bp_share_checkbox_open_services_render'), 'bp_share_services_extra', 'bp_share_extra_options'
         );
     }
+    
+    /**
+    * Intialize setting to show share in popup or new page
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
 
     public function bp_share_checkbox_open_services_render() {
 
@@ -77,17 +100,30 @@ class Buddypress_Share_Options_Page {
         <?php
     }
 
+    /**
+    * Intialize bp_share_settings_section_callback
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
+    
     public function bp_share_settings_section_callback() {
         echo '<div class="bp_share_settings_section_callback_class">';
         echo __('Default is set to open window in popup. If this option is disabled then services open in new tab instead popup.  ', $this->plugin_name);
     }
 
-// build the admin options page
+    /**
+    * build the admin options page
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
+    
     public function bp_share_plugin_options() {
 
-// admin check
+    // admin check
         if ( ! current_user_can('manage_options')) {
-            wp_die(__('You do not have sufficient permissions to access this page.'));
+            wp_die(__('You do not have sufficient permissions to access this page.', BP_SHARE ));
         }
         ?>
 
@@ -99,17 +135,17 @@ class Buddypress_Share_Options_Page {
                 </div>
 
                 <h2 class="nav-tab-wrapper">
-                    <p class="nav-tab nav-tab-active">BuddyPress Share Settings</p>
+                    <p class="nav-tab nav-tab-active"><?php _e( 'BuddyPress Share Settings' , BP_SHARE ); ?></p>
                 </h2>
-                <h3>Add Social Services</h3>
+                <h3><?php _e( 'Add Social Services', BP_SHARE ); ?></h3>
 
 
                 <table cellspacing="0" class="add_share_services widefat fixed plugins">
                     <thead>
                         <tr>
                             <th class="manage-column column-cb check-column" id="cb" scope="col">&nbsp;</th>
-                            <th class="manage-column column-name" id="name" scope="col" style="width: 190px;">Component</th>
-                            <th class="manage-column column-select_services" id="select_services" scope="col">Select Service</th>
+                            <th class="manage-column column-name" id="name" scope="col" style="width: 190px;"><?php _e( 'Component', BP_SHARE ); ?></th>
+                            <th class="manage-column column-select_services" id="select_services" scope="col"><?php _e( 'Select Service', BP_SHARE ); ?></th>
 
                         </tr>
                     </thead>
@@ -119,24 +155,24 @@ class Buddypress_Share_Options_Page {
                             <th scope="row"></th>
 
                             <td class="plugin-title" style="width: 190px;">
-                                <strong style="margin-top: 3px; float: left;">Social Sites</strong><span class="bp_share_req">*</span></td>
+                                <strong style="margin-top: 3px; float: left;"><?php _e( 'Social Sites', BP_SHARE ); ?></strong><span class="bp_share_req">*</span></td>
 
                             <td class="column-description desc">
                                 <div class="plugin-description">
                                     <select name="social_services_selector" id="social_services_selector_id" class="social_services_selector">
-                                        <option value="">-select-</option>
-                                        <option value="bp_share_facebook">Facebook</option>
-                                        <option value="bp_share_twitter">Twitter</option>
-                                        <option value="bp_share_google_plus">Google Plus</option>
-                                        <option value="bp_share_pinterest">Pinterest</option>
-                                        <option value="bp_share_linkedin">Linkedin</option>
-                                        <option value="bp_share_reddit">Reddit</option>
-                                        <option value="bp_share_wordpress">WordPress</option>
-                                        <option value="bp_share_pocket">Pocket</option>
-                                        <option value="bp_share_email">Email</option>
+                                        <option value="">-<?php _e('select' , BP_SHARE ); ?>-</option>
+                                        <option value="bp_share_facebook"><?php _e( 'Facebook', BP_SHARE ); ?></option>
+                                        <option value="bp_share_twitter"><?php _e( 'Twitter', BP_SHARE ); ?></option>
+                                        <option value="bp_share_google_plus"><?php _e( 'Google Plus', BP_SHARE ); ?></option>
+                                        <option value="bp_share_pinterest"><?php _e( 'Pinterest', BP_SHARE ); ?></option>
+                                        <option value="bp_share_linkedin"><?php _e( 'Linkedin', BP_SHARE ); ?></option>
+                                        <option value="bp_share_reddit"><?php _e( 'Reddit', BP_SHARE ); ?></option>
+                                        <option value="bp_share_wordpress"><?php _e( 'WordPress', BP_SHARE ); ?></option>
+                                        <option value="bp_share_pocket"><?php _e( 'Pocket', BP_SHARE ); ?></option>
+                                        <option value="bp_share_email"><?php _e( 'Email', BP_SHARE ); ?></option>
                                     </select>
                                 </div>
-                                <p class="error_service error_service_selector">This field is required!</p>
+                                <p class="error_service error_service_selector"><?php _e( 'This field is required!', BP_SHARE ); ?></p>
                             </td>
                         </tr>
 
@@ -144,12 +180,12 @@ class Buddypress_Share_Options_Page {
                             <th scope="row"></th>
 
                             <td class="plugin-title" style="width: 190px;">
-                                <strong style="margin-top: 3px; float: left;">Font Awesome Icon Class</strong><span class="bp_share_req">*</span></td>
+                                <strong style="margin-top: 3px; float: left;"><?php _e( 'Font Awesome Icon Class', BP_SHARE ); ?></strong><span class="bp_share_req">*</span></td>
 
                             <td class="column-faw-icon desc">
                                 <div class="plugin-faw-icon">
                                     <input class="faw_class_input" name="faw_class_input" type="text">
-                                    <p class="error_service error_service_faw-icon">This field is required!</p>
+                                    <p class="error_service error_service_faw-icon"><?php _e( 'This field is required!', BP_SHARE ); ?></p>
                                 </div>
                             </td>
                         </tr>
@@ -157,12 +193,12 @@ class Buddypress_Share_Options_Page {
                             <th scope="row"></th>
 
                             <td class="plugin-title" style="width: 190px;">
-                                <strong style="margin-top: 3px; float: left;">Description</strong><span class="bp_share_req">*</span></td>
+                                <strong style="margin-top: 3px; float: left;"><?php _e( 'Description', BP_SHARE ); ?></strong><span class="bp_share_req">*</span></td>
 
                             <td class="column-description desc">
                                 <div class="plugin-description">
                                     <textarea name="bp_share_description" class="bp_share_description"></textarea>
-                                    <p class="error_service error_service_description">This field is required!</p>
+                                    <p class="error_service error_service_description"><?php _e( 'This field is required!', BP_SHARE ); ?></p>
                                 </div>
                             </td>
                         </tr>
@@ -171,7 +207,7 @@ class Buddypress_Share_Options_Page {
                             <td class="plugin-title" style="width: 190px;">
                             </td>
                             <td class="add_services_btn_td">
-                                <input type="button" class="add_services_btn" name="add_services_btn" value="Add Services">
+                                <input type="button" class="add_services_btn" name="add_services_btn" value="<?php _e( 'Add Services', BP_SHARE ); ?>">
                                 <p class="spint_action"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></p>
                             </td>
                         </tr>
@@ -185,11 +221,11 @@ class Buddypress_Share_Options_Page {
                                 scope="col">&nbsp;</th>
 
                             <th class="manage-column column-name" id="name" scope="col"
-                                style="width: 190px;">Social Sites</th>
+                                style="width: 190px;"><?php _e( 'Social Sites', BP_SHARE ); ?></th>
 
                             <th class="manage-column column-description" id=
-                                "description" scope="col">Description</th>
-                            <th class="manage-column column-services-action" id="services-action" scope="col">Action</th>
+                                "description" scope="col"><?php _e( 'Description', BP_SHARE ); ?></th>
+                            <th class="manage-column column-services-action" id="services-action" scope="col"><?php _e( 'Action', BP_SHARE ); ?></th>
                         </tr>
                     </thead>
 
@@ -261,7 +297,7 @@ class Buddypress_Share_Options_Page {
             ?>
 
             <p class="submit">
-                <input type="submit" class="button-primary bp_share_option_save" value="<?php _e('Save Changes') ?>" />
+                <input type="submit" class="button-primary bp_share_option_save" value="<?php _e('Save Changes', BP_SHARE ) ?>" />
             </p>
         </form>
 
@@ -269,6 +305,13 @@ class Buddypress_Share_Options_Page {
         do_action('bp_share_add_services_options', $arg1 = '', $arg2 = '');
     }
 
+    /**
+    * Display already inserted services
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
+    
     public function bp_share_insert_services_ajax() {
         $service_name = sanitize_text_field( $_POST['service_name'] );
         $service_faw = sanitize_text_field( $_POST['service_faw'] );
@@ -290,22 +333,22 @@ class Buddypress_Share_Options_Page {
                         "service_description" => "$service_description"
                 ));
                 update_option($option_name, $new_service);
-                $html_view .= '<tr id = "tr_' . $service_key . '">';
-                $html_view .= '<th scope="row">';
+                $html_view .= '<tr id = "tr_' . $service_key . '" class="bp-share-services-row">';
+                $html_view .= '<th scope="row" id="bp_share_chb" class="bp-share-td">';
                 $html_view .= '<input type="checkbox" name="chb_' . $service_key . '" value="1" checked="checked"/>';
                 $html_view .= '</th>';
-                $html_view .= '<td class="plugin-title" style="width: 190px;">';
+                $html_view .= '<td class="bp-share-title bp-share-td" style="width: 190px;">';
                 $html_view .= '<strong style="margin-top: 3px;"><i class="' . $service_faw . ' fa-lg"></i> ' . $service_name . '</strong>';
                 $html_view .= '<div class="row-actions-visible"></div>';
                 $html_view .= '</td>';
-                $html_view .= '<td class="column-description desc">';
+                $html_view .= '<td class="bp-share-column-description desc bp-share-td">';
                 $html_view .= '<div class="plugin-description">';
                 $html_view .= '<p>' . $service_description . '</p>';
                 $html_view .= '</div>';
                 $html_view .= '<div class="active second plugin-version-author-uri">';
                 $html_view .= '</div>';
                 $html_view .= '</td>';
-                $html_view .= '<td class="service_delete"><p class="service_delete_icon" data-bind="' . $service_key . '"><i class="fa fa-close fa-lg"></i></p></td>';
+                $html_view .= '<td class="service_delete bp-share-td"><p class="service_delete_icon" data-bind="' . $service_key . '"><i class="fa fa-close fa-lg"></i></p></td>';
                 $html_view .= '</tr>';
             } else {
                 $new_value = array(
@@ -324,22 +367,22 @@ class Buddypress_Share_Options_Page {
                     $services[$service_value] = $new_value;
                 }
                 update_option($option_name, $services);
-                $html_view .= '<tr id = "tr_' . $service_key . '">';
-                $html_view .= '<th scope="row">';
+                $html_view .= '<tr id = "tr_' . $service_key . '" class="bp-share-services-row">';
+                $html_view .= '<th scope="row" id="bp_share_chb" class="bp-share-td">';
                 $html_view .= '<input type="checkbox" name="chb_' . $service_key . '" value="1" checked="checked"/>';
                 $html_view .= '</th>';
-                $html_view .= '<td class="plugin-title" style="width: 190px;">';
+                $html_view .= '<td class="bp-share-title bp-share-td" style="width: 190px;">';
                 $html_view .= '<strong style="margin-top: 3px;"><i class="' . $service_faw . ' fa-lg"></i> ' . $service_name . '</strong>';
                 $html_view .= '<div class="row-actions-visible"></div>';
                 $html_view .= '</td>';
-                $html_view .= '<td class="column-description desc">';
+                $html_view .= '<td class="bp-share-column-description desc bp-share-td">';
                 $html_view .= '<div class="plugin-description">';
                 $html_view .= '<p>' . $service_description . '</p>';
                 $html_view .= '</div>';
                 $html_view .= '<div class="active second plugin-version-author-uri">';
                 $html_view .= '</div>';
                 $html_view .= '</td>';
-                $html_view .= '<td class="service_delete"><p class="service_delete_icon" data-bind="' . $service_key . '"><i class="fa fa-close fa-lg"></i></p></td>';
+                $html_view .= '<td class="service_delete bp-share-td"><p class="service_delete_icon" data-bind="' . $service_key . '"><i class="fa fa-close fa-lg"></i></p></td>';
                 $html_view .= '</tr>';
             }
         } else {
@@ -350,7 +393,7 @@ class Buddypress_Share_Options_Page {
                     "service_icon" => "$service_faw",
                     "service_description" => "$service_description")
             );
-// The option hasn't been added yet. We'll add it with $autoload set to 'no'.
+        // The option hasn't been added yet. We'll add it with $autoload set to 'no'.
             $deprecated = null;
             $autoload = 'no';
             add_option($option_name, $new_service, $deprecated, $autoload);
@@ -359,10 +402,17 @@ class Buddypress_Share_Options_Page {
         echo json_encode($html_view_arr);
         die();
     }
-
+    
+   /**
+    * Ajax Call when delete any inserted services
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
+    
     public function bp_share_delete_services_ajax() {
         $option_name = 'bp_share_services';
-        $service_name = sanitize_text_field($_POST['service_name']);
+        $service_name = $_POST['service_name'];
         $services = get_option($option_name);
         if ( ! empty($services)) {
             foreach ($services as $service_key => $value) {
@@ -376,9 +426,16 @@ class Buddypress_Share_Options_Page {
         die();
     }
 
+   /**
+    * bp_share_delete_user_services_ajax
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
+    
     public function bp_share_delete_user_services_ajax() {
         $option_name = 'bp_share_services';
-        $service_array = sanitize_text_field($_POST['service_array']);
+        $service_array = $_POST['service_array'];
         $services = get_option($option_name);
         if ( ! empty($service_array)) {
             foreach ($service_array as $service_array_key => $service_array_value) {
@@ -393,10 +450,17 @@ class Buddypress_Share_Options_Page {
         die();
     }
 
+   /**
+    * bp_share_chb_services_ajax
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
+    
     public function bp_share_chb_services_ajax() {
         $option_name = 'bp_share_services';
-        $active_services = sanitize_text_field($_POST['active_chb_array']);
-        $extras_options = sanitize_text_field($_POST['active_chb_extras']);
+        $active_services = isset( $_POST['active_chb_array'] )? wp_unslash( $_POST['active_chb_array'] ) :array();
+        $extras_options =isset( $_POST['active_chb_extras'] )? wp_unslash( $_POST['active_chb_extras'] ) :array();
         if ( ! empty($extras_options)) {
             if ($extras_options[0] == 'bp_share_services_open') {
                 $extra_option_new = array(
@@ -431,7 +495,14 @@ class Buddypress_Share_Options_Page {
         }
         die();
     }
-
+    
+   /**
+    * bp_share_add_options
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
+    
     public function bp_share_add_options($activity_url, $activity_title) {
         $services = apply_filters('bp_share_add_services', $services = array(), $activity_url = '', $activity_title = '');
         if ( ! empty($services)) {
@@ -495,7 +566,14 @@ class Buddypress_Share_Options_Page {
             }
         }
     }
-
+    
+   /**
+    * bp_share_user_added_services
+    * @access public
+    * @author 	Wbcom Designs
+    * @since    1.0.0
+    */
+    
     public function bp_share_user_added_services($services, $activity_url, $activity_title) {
         $user_services = apply_filters('bp_share_add_services', $services, $activity_url, $activity_title);
         $service = get_option('bp_share_services');

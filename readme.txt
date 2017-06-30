@@ -1,7 +1,7 @@
 === BuddyPress Activity Social Share ===
 Contributors: vapvarun,wbcomdesigns
 Donate link: https://wbcomdesigns.com
-Tags: BuddyPress, activity, share, BuddyPress share, BuddyPress activity share
+Tags: buddypress,activity,share
 Requires at least: 3.0.1
 Tested up to: 4.8
 Stable tag: 1.0.2
@@ -18,7 +18,7 @@ This Plugin will add an extended feature to the big name “BuddyPress” that w
 This section describes how to install the plugin and get it working.
 
 1. Download the zip file and extract it.
-2. Upload `bp-share` directory to the `/wp-content/plugins/` directory
+2. Upload `bp-activity-social-share` directory to the `/wp-content/plugins/` directory
 3. Activate the plugin through the \'Plugins\' menu.
 4. Alternatively you can use WordPress Plugin installer from Dashboard->Plugins->Add New to add this plugin
 5. Enjoy
@@ -26,17 +26,24 @@ If you need additional help you can contact us for [Custom Development](https://
 
 == Frequently Asked Questions ==
 
-= Required Plugins =
-BuddyPress is required plugin for activity share
+= Does This plugin requires BuddyPress =
+Yes, It needs you to have BuddyPress installed and activated.
 
-= Do you offer paid support and custom development? =
-Yes, we also offer paid support and customer development,Please visit [wbcomdesigns](http://wbcomdesigns.com/) for any query related to plugin and custom development.
+= Where Do I Ask for support? =
+Please visit [wbcomdesigns] (http://wbcomdesigns.com/) for any query related to plugin and Buddypress.
 
 == Screenshots ==
 
 1. It is displaying default social services under share button after activation screenshot-1.png
 2. It is displaying default plugin setting and enabled services in admin setting page after activation screenshot-2.png
+3. This screenshot shows share button for non-logged in site visitors and corresponds to screenshot-3.png.
 
 == Changelog ==
+= 1.0.2 =
+* Third Version.
+= 1.0.1 =
+* Second Version.
 = 1.0.0 =
 * first version.
+= 1.0.0 =
+* JS fixes for BP 2.7.

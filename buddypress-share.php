@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       BuddyPress Activity Social Share
  * Plugin URI:        http://www.wbcomdesigns.com
- * Description:       This plugin will add an extended feature to the “BuddyPress” that will allow to share Activity “Post Updates” to the social sites.
+ * Description:       This plugin will add an extended feature to the big name “BuddyPress” that will allow to share Activity “Post Updates” to the social sites.
  * Version:           1.0.2
  * Author:            Wbcom Designs<admin@wbcomdesigns.com>
  * Author URI:        http://www.wbcomdesigns.com
@@ -28,11 +28,16 @@
 if ( ! defined('WPINC')) {
     die;
 }
+define( 'BP_SHARE', 'buddypress-share' );
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-buddypress-share-activator.php
- */
+ * @access public
+ * @author   Wbcom Designs
+ * @since    1.0.0
+*/
+
 function activate_buddypress_share() {
     require_once plugin_dir_path(__FILE__) . 'includes/class-buddypress-share-activator.php';
     Buddypress_Share_Activator::activate();
@@ -41,7 +46,11 @@ function activate_buddypress_share() {
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-buddypress-share-deactivator.php
- */
+ * @access public
+ * @author  Wbcom Designs
+ * @since    1.0.0
+*/
+
 function deactivate_buddypress_share() {
     require_once plugin_dir_path(__FILE__) . 'includes/class-buddypress-share-deactivator.php';
     Buddypress_Share_Deactivator::deactivate();
@@ -65,6 +74,7 @@ require plugin_dir_path(__FILE__) . 'includes/class-buddypress-share.php';
  *
  * @since    1.0.0
  */
+
 function run_buddypress_share() {
 
     $plugin = new Buddypress_Share();

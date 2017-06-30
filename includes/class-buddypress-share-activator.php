@@ -32,7 +32,7 @@ class Buddypress_Share_Activator {
     public static function activate() {
         if ( ! is_plugin_active('buddypress/bp-loader.php') and current_user_can('activate_plugins')) {
             // Stop activation redirect and show error
-            wp_die('Sorry, but this plugin requires the BuddyPress Plugin to be installed and active. <br><a href="' . admin_url('plugins.php') . '">&laquo; Return to Plugins</a>');
+            wp_die(__('Sorry, but this plugin requires the BuddyPress Plugin to be installed and active. <br><a href="' . admin_url('plugins.php') . '">&laquo; Return to Plugins</a>', BP_SHARE ) );
         } else {
             if (get_option('bp_share_services') !== false) {
                 $services = get_option('bp_share_services');
@@ -40,54 +40,54 @@ class Buddypress_Share_Activator {
                     $new_service_non_empty = array(
                         "bp_share_facebook" => array(
                             "chb_bp_share_facebook" => 1,
-                            "service_name" => "Facebook",
+                            "service_name" => __( 'Facebook', BP_SHARE ),
                             "service_icon" => "fa fa-facebook",
-                            "service_description" => "Facebook is an American for-profit corporation and online social media and social networking service based in Menlo Park, California, United States."
+                            "service_description" => __( 'Facebook is an American for-profit corporation and online social media and social networking service based in Menlo Park, California, United States.', BP_SHARE )
                         ),
                         "bp_share_twitter" => array(
                             "chb_bp_share_twitter" => 1,
-                            "service_name" => "Twitter",
+                            "service_name" => __( 'Twitter', BP_SHARE ),
                             "service_icon" => "fa fa-twitter",
-                            "service_description" => "Twitter is an online news and social networking service where users post and read short 140-character messages called \"tweets\". Registered users can post and read tweets, but those who are unregistered can only read them."
+                            "service_description" => __( 'Twitter is an online news and social networking service where users post and read short 140-character messages called \'tweets\'. Registered users can post and read tweets, but those who are unregistered can only read them.', BP_SHARE)
                         ),
                         "bp_share_linkedin" => array(
                             "chb_bp_share_linkedin" => 1,
-                            "service_name" => "Linkedin",
+                            "service_name" => __('Linkedin', BP_SHARE ),
                             "service_icon" => "fa fa-linkedin",
-                            "service_description" => "LinkedIn is a business and employment-oriented social networking service that operates via websites."
+                            "service_description" => __( 'LinkedIn is a business and employment-oriented social networking service that operates via websites.', BP_SHARE )
                         ),
                         "bp_share_google_plus" => array(
                             "chb_bp_share_google_plus" => 1,
-                            "service_name" => "Google Plus",
+                            "service_name" => __( 'Google Plus', BP_SHARE ),
                             "service_icon" => "fa fa-google-plus",
-                            "service_description" => "Google Plus is an interest-based social network that is owned and operated by Google."
+                            "service_description" => __( 'Google Plus is an interest-based social network that is owned and operated by Google.', BP_SHARE )
                         ),
                     );
                     update_option('bp_share_services', $new_service_non_empty);
                 } else {
                     $facebook = array(
                         "chb_bp_share_facebook" => 1,
-                        "service_name" => "Facebook",
+                        "service_name" => __( 'Facebook', BP_SHARE ),
                         "service_icon" => "fa fa-facebook",
-                        "service_description" => "Facebook is an American for-profit corporation and online social media and social networking service based in Menlo Park, California, United States."
+                        "service_description" => __( 'Facebook is an American for-profit corporation and online social media and social networking service based in Menlo Park, California, United States.', BP_SHARE )
                     );
                     $twitter = array(
                         "chb_bp_share_twitter" => 1,
-                        "service_name" => "Twitter",
+                        "service_name" => __( 'Twitter', BP_SHARE ),
                         "service_icon" => "fa fa-twitter",
-                        "service_description" => "Twitter is an online news and social networking service where users post and read short 140-character messages called \"tweets\". Registered users can post and read tweets, but those who are unregistered can only read them."
+                        "service_description" => __( 'Twitter is an online news and social networking service where users post and read short 140-character messages called \'tweets\'. Registered users can post and read tweets, but those who are unregistered can only read them.', BP_SHARE )
                     );
                     $linkedin = array(
                         "chb_bp_share_linkedin" => 1,
-                        "service_name" => "Linkedin",
+                        "service_name" => __( 'Linkedin', BP_SHARE ),
                         "service_icon" => "fa fa-linkedin",
-                        "service_description" => "LinkedIn is a business and employment-oriented social networking service that operates via websites."
+                        "service_description" => __( 'LinkedIn is a business and employment-oriented social networking service that operates via websites.', BP_SHARE )
                     );
                     $google_plus = array(
                         "chb_bp_share_google_plus" => 1,
-                        "service_name" => "Google Plus",
+                        "service_name" => __( 'Google Plus', BP_SHARE ),
                         "service_icon" => "fa fa-google-plus",
-                        "service_description" => "Google Plus is an interest-based social network that is owned and operated by Google."
+                        "service_description" => __( 'Google Plus is an interest-based social network that is owned and operated by Google.', BP_SHARE )
                     );
                     foreach ($services as $key => $value) {
                         $services['bp_share_facebook'] = $facebook;
@@ -101,27 +101,27 @@ class Buddypress_Share_Activator {
                 $new_service_empty = array(
                     "bp_share_facebook" => array(
                         "chb_bp_share_facebook" => 1,
-                        "service_name" => "Facebook",
+                        "service_name" => __( 'Facebook', BP_SHARE ),
                         "service_icon" => "fa fa-facebook",
-                        "service_description" => "Facebook is an American for-profit corporation and online social media and social networking service based in Menlo Park, California, United States."
+                        "service_description" => __( 'Facebook is an American for-profit corporation and online social media and social networking service based in Menlo Park, California, United States.', BP_SHARE )
                     ),
                     "bp_share_twitter" => array(
                         "chb_bp_share_twitter" => 1,
-                        "service_name" => "Twitter",
+                        "service_name" => __( 'Twitter', BP_SHARE ),
                         "service_icon" => "fa fa-twitter",
-                        "service_description" => "Twitter is an online news and social networking service where users post and read short 140-character messages called \"tweets\". Registered users can post and read tweets, but those who are unregistered can only read them."
+                        "service_description" => __( 'Twitter is an online news and social networking service where users post and read short 140-character messages called \'tweets\'. Registered users can post and read tweets, but those who are unregistered can only read them.', BP_SHARE)
                     ),
                     "bp_share_linkedin" => array(
                         "chb_bp_share_linkedin" => 1,
-                        "service_name" => "Linkedin",
+                        "service_name" =>  __( 'Linkedin', BP_SHARE ),
                         "service_icon" => "fa fa-linkedin",
-                        "service_description" => "LinkedIn is a business and employment-oriented social networking service that operates via websites."
+                        "service_description" => __( 'LinkedIn is a business and employment-oriented social networking service that operates via websites.', BP_SHARE )
                     ),
                     "bp_share_google_plus" => array(
                         "chb_bp_share_google_plus" => 1,
-                        "service_name" => "Google Plus",
+                        "service_name" => __( 'Google Plus', BP_SHARE ),
                         "service_icon" => "fa fa-google-plus",
-                        "service_description" => "Google Plus is an interest-based social network that is owned and operated by Google."
+                        "service_description" => __( 'Google Plus is an interest-based social network that is owned and operated by Google.', BP_SHARE )
                     ),
                 );
 // The option hasn't been added yet. We'll add it with $autoload set to 'no'.
