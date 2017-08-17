@@ -3,8 +3,8 @@ Contributors: vapvarun,wbcomdesigns
 Donate link: https://wbcomdesigns.com
 Tags: buddypress,activity,share
 Requires at least: 3.0.1
-Tested up to: 4.8
-Stable tag: 1.0.2
+Tested up to: 4.8.1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,9 @@ This Plugin will extend the BuddyPress functionality and share activity post to 
 == Description ==
 
 This Plugin will add an extended feature to the big name “BuddyPress” that will allow to share Activity “Post Updates” to the social sites.
+* [Plugin Homepage](https://wbcomdesigns.com/downloads/buddypress-activity-social-share/)
+* [FAQ](https://wbcomdesigns.com/helpdesk/article-categories/buddypress-activity-social-share/)
+
 
 == Installation ==
 This section describes how to install the plugin and get it working.
@@ -39,6 +42,10 @@ Please visit [wbcomdesigns] (http://wbcomdesigns.com/) for any query related to 
 3. This screenshot shows share button for non-logged in site visitors and corresponds to screenshot-3.png.
 
 == Changelog ==
+= 1.0.3 =
+* Fix - Translation Fixes
+* Enhancement - Enable sharing for logged out users
+* Enhancement - Allow to add more social icons
 = 1.0.2 =
 * Third Version.
 = 1.0.1 =
