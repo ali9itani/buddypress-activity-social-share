@@ -93,6 +93,9 @@ class Buddypress_Share_Admin {
          * between the defined hooks and the functions defined in this
          * class.
          */
+        if ( !wp_script_is( 'jquery-ui-accordion', 'enqueued' ) ) {
+            wp_enqueue_script( 'jquery-ui-accordion' );
+        }
         wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/buddypress-share-admin.js', array('jquery'), $this->version, false);
         wp_localize_script($this->plugin_name, 'my_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
     }

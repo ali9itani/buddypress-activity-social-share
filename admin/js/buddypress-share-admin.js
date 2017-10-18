@@ -108,4 +108,9 @@ selected_extras.push(jQuery(this).attr('name'));
         });
         return false;
         });
+
+        jQuery( "#bpas_faq_accordion" ).accordion({
+                collapsible: true,
+                heightStyle: "content"
+        });
 });
