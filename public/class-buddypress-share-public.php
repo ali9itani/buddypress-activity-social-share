@@ -57,7 +57,7 @@ class Buddypress_Share_Public {
      * @access public
      * @since    1.0.0
      */
-    
+
     public function enqueue_styles() {
 
         /**
@@ -80,7 +80,7 @@ class Buddypress_Share_Public {
      * @access public
      * @since    1.0.0
      */
-    
+
     public function enqueue_scripts() {
 
         /**
@@ -102,21 +102,21 @@ class Buddypress_Share_Public {
      * @access public
      * @since    1.0.0
      */
-    
-    public function bp_activity_share_button_dis() {	
-            if( is_user_logged_in() ) {			
+
+    public function bp_activity_share_button_dis() {
+            if( is_user_logged_in() ) {
                     add_action('bp_activity_entry_meta', array( $this, 'bp_share_activity_filter' ) );
-            } else {	
+            } else {
                     add_action('bp_before_activity_entry_comments', array($this,'bp_share_activity_filter') );
             }
-    }	
-	
+    }
+
     /**
      * BP Share activity filter
      * @access public
      * @since    1.0.0
      */
-    
+
     function bp_share_activity_filter() {
         $service = get_option('bp_share_services');
         $extra_options = get_option('bp_share_services_extra');
@@ -124,7 +124,7 @@ class Buddypress_Share_Public {
         $activity_link = bp_get_activity_thread_permalink();
         $activity_title = bp_get_activity_feed_item_title(); // use for description : bp_get_activity_feed_item_description()
         $plugin_path = plugins_url();
-            if( !is_user_logged_in() ) {	
+            if( !is_user_logged_in() ) {
                     echo '<div class = "activity-meta" >';
             }
         ?>
@@ -184,7 +184,7 @@ class Buddypress_Share_Public {
             });
         </script>
         <?php
-		if( !is_user_logged_in() ) {	
+		if( !is_user_logged_in() ) {
 			echo '</div>';
 		}
     }

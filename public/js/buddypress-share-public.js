@@ -31,8 +31,8 @@
 
 })(jQuery);
 jQuery(document).ready(function () {
-    jQuery(document).on('click', ".bp-share-button", function () {
-        jQuery(this).parent().next(".service-buttons").toggle('slow');
+    jQuery(document).on('click', ".bp-share-button", function (e) {
+        jQuery(this).parent().next(".service-buttons").slideDown(1000);
     });
     jQuery(document).on("click", ".bp-share.has-popup", function (e) {
         e.preventDefault();

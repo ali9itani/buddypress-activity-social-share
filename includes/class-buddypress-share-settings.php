@@ -353,7 +353,7 @@ class Buddypress_Share_Options_Page {
                     <?php _e( 'In plugin general setting tab, you can see settings Add Social Services. Here you can add new service.', BP_SHARE ); ?>
                 </p>
             </div>
-            <h3><?php _e( 'How To Remove Social Services From Front End Share Option?', BP_SHARE ); ?></h3>
+            <h3><?php _e( 'How To remove Social Services from front end Share option?', BP_SHARE ); ?></h3>
             <div>
                 <p>
                     <?php _e( 'In plugin general seetings tab, you can see all services listing. Here you can remove service.', BP_SHARE ); ?>
@@ -363,6 +363,12 @@ class Buddypress_Share_Options_Page {
             <div>
                 <p>
                     <?php _e( 'When you click on any of share option in front end then by default social site share open in the pop-up window but if you checked Extra Options then it will be open in new tab.', BP_SHARE ); ?>
+                </p>
+            </div>
+            <h3><?php _e( 'Is it possible to add a new social site in Share option?', BP_SHARE ); ?></h3>
+            <div>
+                <p>
+                    <?php _e( 'If you want to add new social site then you can use <b>bp_share_user_services</b> action to add the new social site in Share option.', BP_SHARE ); ?>
                 </p>
             </div>
             <h3><?php _e( 'Where do I ask for support?', BP_SHARE ); ?></h3>
@@ -396,10 +402,10 @@ class Buddypress_Share_Options_Page {
             if (empty($services)) {
                 $new_service = array(
                     "$service_value" => array(
-                        "chb_$service_value" => 1,
-                        "service_name" => "$service_name",
-                        "service_icon" => "$service_faw",
-                        "service_description" => "$service_description"
+                    "chb_$service_value" => 1,
+                    "service_name" => "$service_name",
+                    "service_icon" => "$service_faw",
+                    "service_description" => "$service_description"
                 ));
                 update_option($option_name, $new_service);
                 $html_view .= '<tr id = "tr_' . $service_key . '" class="bp-share-services-row">';
