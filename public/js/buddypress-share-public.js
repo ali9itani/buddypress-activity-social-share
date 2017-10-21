@@ -32,7 +32,7 @@
 })(jQuery);
 jQuery(document).ready(function () {
     jQuery(document).on('click', ".bp-share-button", function (e) {
-        jQuery(this).parent().next(".service-buttons").slideDown(1000);
+        jQuery(this).parent().parent().next(".service-buttons").toggle(500);
     });
     jQuery(document).on("click", ".bp-share.has-popup", function (e) {
         e.preventDefault();

@@ -131,7 +131,7 @@ class Buddypress_Share_Public {
         <span class="bp-share-btn">
             <a class="button item-button bp-secondary-action bp-share-button" rel="nofollow"><?php _e( 'Share', BP_SHARE ); ?></a>
         </span>
-
+        </div>
         <div class="service-buttons <?php echo $activity_type ?>" style="display: none;">
             <?php
             if (!empty($service)) {
@@ -175,6 +175,7 @@ class Buddypress_Share_Public {
             do_action('bp_share_user_services', $services = array(), $activity_link, $activity_title);
             ?>
         </div>
+        <div>
         <script>
             jQuery(document).ready(function () {
                 var pop_active = '<?php echo isset($extra_options['bp_share_services_open']) ? $extra_options['bp_share_services_open'] : '' ?>';

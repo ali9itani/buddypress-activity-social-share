@@ -18,3 +18,7 @@
 a.bp-share.has-popup {
     border-bottom: none;
 }
+
+.service-buttons a {
+    padding: 4px 8px;
+}
