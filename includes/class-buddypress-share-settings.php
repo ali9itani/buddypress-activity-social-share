@@ -359,6 +359,12 @@ class Buddypress_Share_Options_Page {
                     <?php _e( 'In plugin general seetings tab, you can see all services listing. Here you can remove service.', BP_SHARE ); ?>
                 </p>
             </div>
+            <h3><?php _e( 'Where will Extra Options setting be reflected?', BP_SHARE ); ?></h3>
+            <div>
+                <p>
+                    <?php _e( 'When you click on any of share option in front end then by default social site share open in the pop-up window but if you checked Extra Options then it will be open in new tab.', BP_SHARE ); ?>
+                </p>
+            </div>
             <h3><?php _e( 'Where do I ask for support?', BP_SHARE ); ?></h3>
             <div>
                 <p>
