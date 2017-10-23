@@ -43,21 +43,7 @@ function activate_buddypress_share() {
     Buddypress_Share_Activator::activate();
 }
 
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-buddypress-share-deactivator.php
- * @access public
- * @author  Wbcom Designs
- * @since    1.0.0
-*/
-
-function deactivate_buddypress_share() {
-    require_once plugin_dir_path(__FILE__) . 'includes/class-buddypress-share-deactivator.php';
-    Buddypress_Share_Deactivator::deactivate();
-}
-
 register_activation_hook(__FILE__, 'activate_buddypress_share');
-register_deactivation_hook(__FILE__, 'deactivate_buddypress_share');
 
 /**
  * The core plugin class that is used to define internationalization,
