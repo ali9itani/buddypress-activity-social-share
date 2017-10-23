@@ -52,6 +52,20 @@ register_activation_hook(__FILE__, 'activate_buddypress_share');
 require plugin_dir_path(__FILE__) . 'includes/class-buddypress-share.php';
 
 /**
+ * Adding setting link on plugin listing page
+ */
+add_filter('plugin_action_links_'.plugin_basename(__FILE__),'bp_activity_share_plugin_actions', 10, 2);
+
+/**
+ * @desc Adds the Settings link to the plugin activate/deactivate page
+ */
+function bp_activity_share_plugin_actions($links, $file) {
+	$settings_link = '<a href="' . admin_url("admin.php?page=buddypress-share") . '">' . __('Settings', BP_SHARE ) . '</a>';
+	array_unshift($links, $settings_link); // before other links
+	return $links;
+}
+
+/**
  * Begins execution of the plugin.
  *
  * Since everything within the plugin is registered via hooks,
