@@ -30,10 +30,7 @@ class Buddypress_Share_Activator {
      * @since    1.0.0
      */
     public static function activate() {
-        if ( ! is_plugin_active('buddypress/bp-loader.php') and current_user_can('activate_plugins')) {
-            // Stop activation redirect and show error
-            wp_die(__('Sorry, but this plugin requires the BuddyPress Plugin to be installed and active. <br><a href="' . admin_url('plugins.php') . '">&laquo; Return to Plugins</a>', BP_SHARE ) );
-        } else {
+        if ( is_plugin_active('buddypress/bp-loader.php') and current_user_can('activate_plugins')) {
             if (get_option('bp_share_services') !== false) {
                 $services = get_option('bp_share_services');
                 if (empty($services)) {
@@ -144,5 +141,4 @@ class Buddypress_Share_Activator {
             }
         }
     }
-
 }

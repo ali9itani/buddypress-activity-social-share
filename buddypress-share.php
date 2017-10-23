@@ -81,4 +81,25 @@ function run_buddypress_share() {
     $plugin->run();
 
 }
-run_buddypress_share();
+
+/**
+ * Check plugin requirement on plugins loaded
+ * this plugin requires buddypress to be installed and active
+ */
+add_action('plugins_loaded', 'bpshare_plugin_init');
+function bpshare_plugin_init() {
+	$bp_active = in_array('buddypress/bp-loader.php', get_option('active_plugins'));
+	if ( current_user_can('activate_plugins') && $bp_active !== true ) {
+		add_action('admin_notices', 'bpshare_plugin_admin_notice');
+	} else {
+		run_buddypress_share();
+	}
+}
+
+function bpshare_plugin_admin_notice() {
+	$bpshare_plugin = __( 'BuddyPress Activity Social Share', BP_SHARE );
+	$bp_plugin      = __( 'BuddyPress', BP_SHARE );
+
+	echo '<div class="error"><p>' . sprintf(__('%1$s is ineffective now as it requires %2$s to be installed and active.', BP_SHARE), '<strong>' . esc_html($bpshare_plugin) . '</strong>', '<strong>' . esc_html($bp_plugin) . '</strong>') . '</p></div>';
+	if (isset($_GET['activate'])) unset($_GET['activate']);
+}
