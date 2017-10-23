@@ -103,7 +103,7 @@ class Buddypress_Share {
      * @since    1.0.0
      * @access   private
      */
-    
+
     private function load_dependencies() {
 
         /**
@@ -145,7 +145,7 @@ class Buddypress_Share {
      * @since    1.0.0
      * @access   private
      */
-    
+
     private function set_locale() {
 
         $plugin_i18n = new Buddypress_Share_i18n();
@@ -160,7 +160,7 @@ class Buddypress_Share {
      * @since    1.0.0
      * @access   private
      */
-    
+
     private function define_admin_hooks() {
         $plugin_admin = new Buddypress_Share_Admin($this->get_plugin_name(), $this->get_version());
         $plugin_admin_page = new Buddypress_Share_Options_Page($this->get_plugin_name(), $this->get_version());
@@ -181,6 +181,11 @@ class Buddypress_Share {
         $this->loader->add_action('wp_ajax_nopriv_bp_share_delete_user_services_ajax', $plugin_admin_page, 'bp_share_delete_user_services_ajax');
         $this->loader->add_action('bp_share_add_services_options', $plugin_admin_page, 'bp_share_add_options', 10, 2);
         $this->loader->add_action('bp_share_user_services', $plugin_admin_page, 'bp_share_user_added_services', 10, 3);
+
+        // wp_localize_script( 'wp_ajax_bp_share_insert_services_ajax', 'insert_services_nonce', wp_create_nonce( 'bp_share_nonce' ) );
+        // wp_localize_script( 'wp_ajax_bp_share_delete_services_ajax', 'delete_services_nonce', wp_create_nonce( 'bp_share_nonce' ) );
+        // wp_localize_script( 'wp_ajax_bp_share_chb_services_ajax', 'chb_services_nonce', wp_create_nonce( 'bp_share_nonce' ) );
+        // wp_localize_script( 'wp_ajax_bp_delete_user_services_ajax', 'delete_user_services_nonce', wp_create_nonce( 'bp_share_nonce' ) );
     }
 
     /**
@@ -190,21 +195,21 @@ class Buddypress_Share {
      * @since    1.0.0
      * @access   private
      */
-    
+
     private function define_public_hooks() {
         $plugin_public = new Buddypress_Share_Public($this->get_plugin_name(), $this->get_version());
         $plugin_options_page = new Buddypress_Share_Options_Page($this->get_plugin_name(), $this->get_version());
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-		$this->loader->add_action('bp_init', $plugin_public, 'bp_activity_share_button_dis' );	
+		$this->loader->add_action('bp_init', $plugin_public, 'bp_activity_share_button_dis' );
     }
-	
+
     /**
      * Run the loader to execute all of the hooks with WordPress.
      * @access public
      * @since    1.0.0
      */
-    
+
     public function run() {
         $this->loader->run();
     }
@@ -217,7 +222,7 @@ class Buddypress_Share {
      * @access public
      * @return    string    The name of the plugin.
      */
-    
+
     public function get_plugin_name() {
         return $this->plugin_name;
     }
@@ -229,7 +234,7 @@ class Buddypress_Share {
      * @access public
      * @return    Buddypress_Share_Loader    Orchestrates the hooks of the plugin.
      */
-    
+
     public function get_loader() {
         return $this->loader;
     }
@@ -241,7 +246,7 @@ class Buddypress_Share {
      * @access public
      * @return    string    The version number of the plugin.
      */
-    
+
     public function get_version() {
         return $this->version;
     }

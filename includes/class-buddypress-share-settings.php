@@ -395,84 +395,86 @@ class Buddypress_Share_Options_Page {
         $html_view_arr = array();
         $html_view = "";
         $html_view_arr['status'] = false;
-        if (get_option($option_name) !== false) {
-            $services = get_option($option_name);
-            if (empty($services)) {
+        if( ! empty( $_POST ) && check_admin_referer( 'bp_share_nonce', 'nonce' ) ) {
+            if (get_option($option_name) !== false) {
+                $services = get_option($option_name);
+                if (empty($services)) {
+                    $new_service = array(
+                        "$service_value" => array(
+                        "chb_$service_value" => 1,
+                        "service_name" => "$service_name",
+                        "service_icon" => "$service_faw",
+                        "service_description" => "$service_description"
+                    ));
+                    update_option($option_name, $new_service);
+                    $html_view .= '<tr id = "tr_' . $service_key . '" class="bp-share-services-row">';
+                    $html_view .= '<th scope="row" id="bp_share_chb" class="bp-share-td">';
+                    $html_view .= '<input type="checkbox" name="chb_' . $service_key . '" value="1" checked="checked"/>';
+                    $html_view .= '</th>';
+                    $html_view .= '<td class="bp-share-title bp-share-td" style="width: 190px;">';
+                    $html_view .= '<strong style="margin-top: 3px;"><i class="' . $service_faw . ' fa-lg"></i> ' . $service_name . '</strong>';
+                    $html_view .= '<div class="row-actions-visible"></div>';
+                    $html_view .= '</td>';
+                    $html_view .= '<td class="bp-share-column-description desc bp-share-td">';
+                    $html_view .= '<div class="plugin-description">';
+                    $html_view .= '<p>' . $service_description . '</p>';
+                    $html_view .= '</div>';
+                    $html_view .= '<div class="active second plugin-version-author-uri">';
+                    $html_view .= '</div>';
+                    $html_view .= '</td>';
+                    $html_view .= '<td class="service_delete bp-share-td"><p class="service_delete_icon" data-bind="' . $service_key . '"><i class="fa fa-close fa-lg"></i></p></td>';
+                    $html_view .= '</tr>';
+                } else {
+                    $new_value = array(
+                        "chb_$service_value" => 1,
+                        "service_name" => "$service_name",
+                        "service_icon" => "$service_faw",
+                        "service_description" => "$service_description"
+                    );
+
+                    foreach ($services as $s_key => $s_value) {
+                        if ($s_key == $service_value) {
+                            $html_view_arr['status'] = true;
+                        }
+                    }
+                    foreach ($services as $key => $value) {
+                        $services[$service_value] = $new_value;
+                    }
+                    update_option($option_name, $services);
+                    $html_view .= '<tr id = "tr_' . $service_key . '" class="bp-share-services-row">';
+                    $html_view .= '<th scope="row" id="bp_share_chb" class="bp-share-td">';
+                    $html_view .= '<input type="checkbox" name="chb_' . $service_key . '" value="1" checked="checked"/>';
+                    $html_view .= '</th>';
+                    $html_view .= '<td class="bp-share-title bp-share-td" style="width: 190px;">';
+                    $html_view .= '<strong style="margin-top: 3px;"><i class="' . $service_faw . ' fa-lg"></i> ' . $service_name . '</strong>';
+                    $html_view .= '<div class="row-actions-visible"></div>';
+                    $html_view .= '</td>';
+                    $html_view .= '<td class="bp-share-column-description desc bp-share-td">';
+                    $html_view .= '<div class="plugin-description">';
+                    $html_view .= '<p>' . $service_description . '</p>';
+                    $html_view .= '</div>';
+                    $html_view .= '<div class="active second plugin-version-author-uri">';
+                    $html_view .= '</div>';
+                    $html_view .= '</td>';
+                    $html_view .= '<td class="service_delete bp-share-td"><p class="service_delete_icon" data-bind="' . $service_key . '"><i class="fa fa-close fa-lg"></i></p></td>';
+                    $html_view .= '</tr>';
+                }
+            } else {
                 $new_service = array(
                     "$service_value" => array(
-                    "chb_$service_value" => 1,
-                    "service_name" => "$service_name",
-                    "service_icon" => "$service_faw",
-                    "service_description" => "$service_description"
-                ));
-                update_option($option_name, $new_service);
-                $html_view .= '<tr id = "tr_' . $service_key . '" class="bp-share-services-row">';
-                $html_view .= '<th scope="row" id="bp_share_chb" class="bp-share-td">';
-                $html_view .= '<input type="checkbox" name="chb_' . $service_key . '" value="1" checked="checked"/>';
-                $html_view .= '</th>';
-                $html_view .= '<td class="bp-share-title bp-share-td" style="width: 190px;">';
-                $html_view .= '<strong style="margin-top: 3px;"><i class="' . $service_faw . ' fa-lg"></i> ' . $service_name . '</strong>';
-                $html_view .= '<div class="row-actions-visible"></div>';
-                $html_view .= '</td>';
-                $html_view .= '<td class="bp-share-column-description desc bp-share-td">';
-                $html_view .= '<div class="plugin-description">';
-                $html_view .= '<p>' . $service_description . '</p>';
-                $html_view .= '</div>';
-                $html_view .= '<div class="active second plugin-version-author-uri">';
-                $html_view .= '</div>';
-                $html_view .= '</td>';
-                $html_view .= '<td class="service_delete bp-share-td"><p class="service_delete_icon" data-bind="' . $service_key . '"><i class="fa fa-close fa-lg"></i></p></td>';
-                $html_view .= '</tr>';
-            } else {
-                $new_value = array(
-                    "chb_$service_value" => 1,
-                    "service_name" => "$service_name",
-                    "service_icon" => "$service_faw",
-                    "service_description" => "$service_description"
+                        "chb_$service_value" => 1,
+                        "service_name" => "$service_name",
+                        "service_icon" => "$service_faw",
+                        "service_description" => "$service_description")
                 );
-
-                foreach ($services as $s_key => $s_value) {
-                    if ($s_key == $service_value) {
-                        $html_view_arr['status'] = true;
-                    }
-                }
-                foreach ($services as $key => $value) {
-                    $services[$service_value] = $new_value;
-                }
-                update_option($option_name, $services);
-                $html_view .= '<tr id = "tr_' . $service_key . '" class="bp-share-services-row">';
-                $html_view .= '<th scope="row" id="bp_share_chb" class="bp-share-td">';
-                $html_view .= '<input type="checkbox" name="chb_' . $service_key . '" value="1" checked="checked"/>';
-                $html_view .= '</th>';
-                $html_view .= '<td class="bp-share-title bp-share-td" style="width: 190px;">';
-                $html_view .= '<strong style="margin-top: 3px;"><i class="' . $service_faw . ' fa-lg"></i> ' . $service_name . '</strong>';
-                $html_view .= '<div class="row-actions-visible"></div>';
-                $html_view .= '</td>';
-                $html_view .= '<td class="bp-share-column-description desc bp-share-td">';
-                $html_view .= '<div class="plugin-description">';
-                $html_view .= '<p>' . $service_description . '</p>';
-                $html_view .= '</div>';
-                $html_view .= '<div class="active second plugin-version-author-uri">';
-                $html_view .= '</div>';
-                $html_view .= '</td>';
-                $html_view .= '<td class="service_delete bp-share-td"><p class="service_delete_icon" data-bind="' . $service_key . '"><i class="fa fa-close fa-lg"></i></p></td>';
-                $html_view .= '</tr>';
+            // The option hasn't been added yet. We'll add it with $autoload set to 'no'.
+                $deprecated = null;
+                $autoload = 'no';
+                add_option($option_name, $new_service, $deprecated, $autoload);
             }
-        } else {
-            $new_service = array(
-                "$service_value" => array(
-                    "chb_$service_value" => 1,
-                    "service_name" => "$service_name",
-                    "service_icon" => "$service_faw",
-                    "service_description" => "$service_description")
-            );
-        // The option hasn't been added yet. We'll add it with $autoload set to 'no'.
-            $deprecated = null;
-            $autoload = 'no';
-            add_option($option_name, $new_service, $deprecated, $autoload);
+            $html_view_arr['view'] = $html_view;
+            echo json_encode($html_view_arr);
         }
-        $html_view_arr['view'] = $html_view;
-        echo json_encode($html_view_arr);
         die();
     }
 
@@ -484,15 +486,17 @@ class Buddypress_Share_Options_Page {
     */
 
     public function bp_share_delete_services_ajax() {
-        $option_name = 'bp_share_services';
-        $service_name = $_POST['service_name'];
-        $services = get_option($option_name);
-        if ( ! empty($services)) {
-            foreach ($services as $service_key => $value) {
-                if ($service_key == $service_name) {
-                    unset($services[$service_key]);
-                    update_option($option_name, $services);
-                    echo $service_key;
+        if( ! empty( $_POST ) && check_admin_referer( 'bp_share_nonce', 'nonce' ) ) {
+            $option_name = 'bp_share_services';
+            $service_name = $_POST['service_name'];
+            $services = get_option($option_name);
+            if ( ! empty($services)) {
+                foreach ($services as $service_key => $value) {
+                    if ($service_key == $service_name) {
+                        unset($services[$service_key]);
+                        update_option($option_name, $services);
+                        echo $service_key;
+                    }
                 }
             }
         }
@@ -531,38 +535,40 @@ class Buddypress_Share_Options_Page {
     */
 
     public function bp_share_chb_services_ajax() {
-        $option_name = 'bp_share_services';
-        $active_services = isset( $_POST['active_chb_array'] )? wp_unslash( $_POST['active_chb_array'] ) :array();
-        $extras_options =isset( $_POST['active_chb_extras'] )? wp_unslash( $_POST['active_chb_extras'] ) :array();
-        if ( ! empty($extras_options)) {
-            if ($extras_options[0] == 'bp_share_services_open') {
+        if( ! empty( $_POST ) && check_admin_referer( 'bp_share_nonce', 'nonce' ) ) {
+            $option_name = 'bp_share_services';
+            $active_services = isset( $_POST['active_chb_array'] )? wp_unslash( $_POST['active_chb_array'] ) :array();
+            $extras_options =isset( $_POST['active_chb_extras'] )? wp_unslash( $_POST['active_chb_extras'] ) :array();
+            if ( ! empty($extras_options)) {
+                if ($extras_options[0] == 'bp_share_services_open') {
+                    $extra_option_new = array(
+                        'bp_share_services_open' => 1
+                    );
+                    update_option('bp_share_services_extra', $extra_option_new);
+                }
+            } else {
                 $extra_option_new = array(
-                    'bp_share_services_open' => 1
+                    'bp_share_services_open' => 0
                 );
                 update_option('bp_share_services_extra', $extra_option_new);
             }
-        } else {
-            $extra_option_new = array(
-                'bp_share_services_open' => 0
-            );
-            update_option('bp_share_services_extra', $extra_option_new);
-        }
-        $services = get_option('bp_share_services');
-        if ( ! empty($services)) {
-            if ( ! empty($active_services)) {
-                foreach ($services as $service_key => $value) {
-                    if (in_array('chb_' . $service_key, $active_services)) {
-                        $services[$service_key]['chb_' . $service_key] = 1;
-                        update_option($option_name, $services);
-                    } else {
+            $services = get_option('bp_share_services');
+            if ( ! empty($services)) {
+                if ( ! empty($active_services)) {
+                    foreach ($services as $service_key => $value) {
+                        if (in_array('chb_' . $service_key, $active_services)) {
+                            $services[$service_key]['chb_' . $service_key] = 1;
+                            update_option($option_name, $services);
+                        } else {
+                            $services[$service_key]['chb_' . $service_key] = 0;
+                            update_option($option_name, $services);
+                        }
+                    }
+                } else {
+                    foreach ($services as $service_key => $value) {
                         $services[$service_key]['chb_' . $service_key] = 0;
                         update_option($option_name, $services);
                     }
-                }
-            } else {
-                foreach ($services as $service_key => $value) {
-                    $services[$service_key]['chb_' . $service_key] = 0;
-                    update_option($option_name, $services);
                 }
             }
         }
