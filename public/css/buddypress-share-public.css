@@ -22,3 +22,7 @@ a.bp-share.has-popup {
 .service-buttons a {
     padding: 4px 8px;
 }
+
+.service-buttons {
+	padding: 10px;
+}

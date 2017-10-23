@@ -127,9 +127,14 @@ class Buddypress_Share_Public {
             if( !is_user_logged_in() ) {
                     echo '<div class = "activity-meta" >';
             }
+        $share_button_text = 'Share';
+        $updated_text = apply_filters('bpas_share_button_text_override', $share_button_text );
+        if (isset($updated_text)) {
+            $share_button_text = $updated_text;
+        }
         ?>
         <span class="bp-share-btn">
-            <a class="button item-button bp-secondary-action bp-share-button" rel="nofollow"><?php _e( 'Share', BP_SHARE ); ?></a>
+            <a class="button item-button bp-secondary-action bp-share-button" rel="nofollow"><?php _e( "$share_button_text", BP_SHARE ); ?></a>
         </span>
         </div>
         <div class="service-buttons <?php echo $activity_type ?>" style="display: none;">
