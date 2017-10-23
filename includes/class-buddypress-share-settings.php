@@ -334,9 +334,7 @@ class Buddypress_Share_Options_Page {
                 <input type="submit" class="button-primary bp_share_option_save" value="<?php _e('Save Changes', BP_SHARE ) ?>" />
             </p>
         </form>
-
         <?php  do_action('bp_share_add_services_options', $arg1 = '', $arg2 = ''); ?>
-        </form>
     <?php }
 
     public function bpas_faq_setting_section() { ?>
