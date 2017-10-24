@@ -363,10 +363,16 @@ class Buddypress_Share_Options_Page {
                     <?php _e( 'When you click on any of share option in front end then by default social site share open in the pop-up window but if you unchecked Extra Options then it will be open in new tab.', BP_SHARE ); ?>
                 </p>
             </div>
-            <h3><?php _e( 'Is it possible to add a new social site in Share option?', BP_SHARE ); ?></h3>
+            <h3><?php _e( 'Is it possible to add a new social service in Share option?', BP_SHARE ); ?></h3>
             <div>
                 <p>
-                    <?php _e( 'If you want to add new social site then you can use <b>bp_share_user_services</b> action to add the new social site in Share option.', BP_SHARE ); ?>
+                    <?php _e( 'If you want to add new social service then you can use <b>bp_share_user_services</b> action to add the new social site in Share option.', BP_SHARE ); ?>
+                </p>
+            </div>
+            <h3><?php _e( 'Is it possible to change share button text?', BP_SHARE ); ?></h3>
+            <div>
+                <p>
+                    <?php _e( 'If you want to change share button text then you can use <b>bpas_share_button_text_override</b> filter.', BP_SHARE ); ?>
                 </p>
             </div>
             <h3><?php _e( 'Where do I ask for support?', BP_SHARE ); ?></h3>
