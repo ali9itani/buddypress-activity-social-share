@@ -26,3 +26,31 @@ a.bp-share.has-popup {
 .service-buttons {
 	padding: 10px;
 }
+
+.bp-share .fa-facebook {
+    color: #3B5998;
+}
+.bp-share .fa-twitter {
+    color: #1DA1F2;
+}
+.bp-share .fa-linkedin {
+    color: #007BB6;
+}
+.bp-share .fa-google-plus {
+    color: #DF4B37;
+}
+.bp-share .fa-envelope {
+    color: #AD0000;
+}
+.bp-share .fa-pinterest {
+    color: #BD081C;
+}
+.bp-share .fa-reddit {
+    color: #FF4501;
+}
+.bp-share .fa-wordpress {
+    color: #21759B;
+}
+.bp-share .fa-get-pocket {
+    color: #EF3E56;
+}
