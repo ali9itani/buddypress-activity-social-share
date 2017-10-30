@@ -150,7 +150,7 @@ class Buddypress_Share {
 
         $plugin_i18n = new Buddypress_Share_i18n();
 
-        $this->loader->add_action('plugins_loaded', $plugin_i18n, 'bp_share_load_plugin_textdomain');
+        $this->loader->add_action('init', $plugin_i18n, 'bp_share_load_plugin_textdomain');
     }
 
     /**
@@ -181,11 +181,6 @@ class Buddypress_Share {
         $this->loader->add_action('wp_ajax_nopriv_bp_share_delete_user_services_ajax', $plugin_admin_page, 'bp_share_delete_user_services_ajax');
         $this->loader->add_action('bp_share_add_services_options', $plugin_admin_page, 'bp_share_add_options', 10, 2);
         $this->loader->add_action('bp_share_user_services', $plugin_admin_page, 'bp_share_user_added_services', 10, 3);
-
-        // wp_localize_script( 'wp_ajax_bp_share_insert_services_ajax', 'insert_services_nonce', wp_create_nonce( 'bp_share_nonce' ) );
-        // wp_localize_script( 'wp_ajax_bp_share_delete_services_ajax', 'delete_services_nonce', wp_create_nonce( 'bp_share_nonce' ) );
-        // wp_localize_script( 'wp_ajax_bp_share_chb_services_ajax', 'chb_services_nonce', wp_create_nonce( 'bp_share_nonce' ) );
-        // wp_localize_script( 'wp_ajax_bp_delete_user_services_ajax', 'delete_user_services_nonce', wp_create_nonce( 'bp_share_nonce' ) );
     }
 
     /**
