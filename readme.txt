@@ -2,9 +2,9 @@
 Contributors: vapvarun,wbcomdesigns
 Donate link: https://wbcomdesigns.com
 Tags: buddypress,activity,share
-Requires at least: 3.0.1
-Tested up to: 4.8.1
-Stable tag: 1.0.3
+Requires at least: 4.0
+Tested up to: 4.8.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,19 +29,42 @@ If you need additional help you can contact us for [Custom Development](https://
 
 == Frequently Asked Questions ==
 
-= Does This plugin requires BuddyPress =
-Yes, It needs you to have BuddyPress installed and activated.
+= Is this plugin requires another plugin? =
+Yes, this plugin requires BuddyPress plugin.
+
+= How to add social service? =
+In plugin general setting tab, you can see settings Add Social Services. Here you can add new service.
+
+= How To remove Social Services from front end Share option? =
+In plugin general seetings tab, you can see all services listing. Here you can remove service.
+
+= Where will Extra Options setting be reflected? =
+When you click on any of share option in front end then by default social site share open in the pop-up window but if you unchecked Extra Options then it will be open in new tab.
+
+= Is it possible to add a new social service in Share option? =
+If you want to add new social service then you can use bp_share_user_services action to add the new social site in Share option.
+
+= Is it possible to change share button text? =
+If you want to change share button text then you can use bpas_share_button_text_override filter.
 
 = Where Do I Ask for support? =
 Please visit [wbcomdesigns] (http://wbcomdesigns.com/) for any query related to plugin and Buddypress.
 
 == Screenshots ==
 
-1. It is displaying default social services under share button after activation screenshot-1.png
-2. It is displaying default plugin setting and enabled services in admin setting page after activation screenshot-2.png
-3. This screenshot shows share button for non-logged in site visitors and corresponds to screenshot-3.png.
+1. BuddyPress Activity Social Share admin setting page View : It is the screen that shows admin settings at BuddyPress Activity Social Share under General tab and corresponds to screenshot-1.(png|jpg|jpeg|gif).
+2. The screenshot shows how to add new service and corresponds to screenshot-2.(png|jpg|jpeg|gif).
+3. The screenshot shows FAQ(s) related to BuddyPress Activity Social Share plugin and corresponds to screenshot-3.(png|jpg|jpeg|gif).
+4. The screenshot shows Social Share button & services for logged-in users added by plugin related to BuddyPress Activity Social Share plugin and corresponds to screenshot-4.(png|jpg|jpeg|gif).
+5. The screenshot shows Social Share button & services for logged-out users added by plugin related to BuddyPress Activity Social Share plugin and corresponds to screenshot-5.(png|jpg|jpeg|gif).
 
 == Changelog ==
+= 1.0.4 =
+* Fix - Remove glitch on click of share icon.
+* Enhancement - Provide filter to change 'Share' button text.
+* Enhancement - Provide filter to add new social service' in front end.
+* Enhancement - Change view of social share button icons.
+* Enhancement - Added post content for activity share on facebook and google plus.
 = 1.0.3 =
 * Fix - Translation Fixes
 * Enhancement - Enable sharing for logged out users
