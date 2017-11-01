@@ -60,6 +60,7 @@ Please visit [wbcomdesigns] (http://wbcomdesigns.com/) for any query related to 
 
 == Changelog ==
 = 1.0.4 =
+* Fixed missing thumbnail after share activity post.
 * Fix - Remove glitch on click of share icon.
 * Enhancement - Provide filter to change 'Share' button text.
 * Enhancement - Provide filter to add new social service' in front end.
