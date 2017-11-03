@@ -8,7 +8,9 @@ Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This Plugin will extend the BuddyPress functionality and share activity post to social sites.
+Free WordPress plugin to allow anyone easily share BuddyPress Activites on major social media (Facebook, Twitter, Google+, Linkedin ).
+
+A perfect plugin to make your user activities on your website social-share-friendly, and increase your members social reach dramatically!
 
 == Description ==
 
