@@ -100,10 +100,4 @@ class Buddypress_Share_Admin {
         wp_localize_script($this->plugin_name, 'my_ajax_object', array('ajax_url' => admin_url('admin-ajax.php'), 'nonce' => wp_create_nonce( 'bp_share_nonce' )));
     }
 
-    function buddypress_share_add_settings_link($links) {
-        $settings_link = '<a href="options-general.php?page=buddypress-share">' . __('Settings', BP_SHARE ) . '</a>';
-        array_push($links, $settings_link);
-        return $links;
-    }
-
 }

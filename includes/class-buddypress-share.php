@@ -48,14 +48,6 @@ class Buddypress_Share {
 	 */
 	protected $plugin_name;
 
-	/**
-	 * Plugin basename
-	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $plugin_basename    Plugin basename.
-	 */
-	protected $plugin_basename;
 
 	/**
 	 * The current version of the plugin.
@@ -79,7 +71,6 @@ class Buddypress_Share {
 
 		$this->plugin_name		 = 'buddypress-share';
 		$this->version			 = '1.0.0';
-		$this->plugin_basename	 = 'bp-activity-social-share/buddypress-share.php';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -164,7 +155,6 @@ class Buddypress_Share {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( "plugin_action_links_$this->plugin_basename", $plugin_admin, 'buddypress_share_add_settings_link' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin_page, 'bp_share_plugin_menu' );
 		$this->loader->add_action( 'network_admin_menu', $plugin_admin_page, 'bp_share_plugin_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin_page, 'bp_share_settings_init' );
@@ -192,7 +182,7 @@ class Buddypress_Share {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_filter( 'language_attributes', $plugin_public, 'bp_share_doctype_opengraph' );
-		$this->loader->add_action( 'wp_head', $plugin_public, 'bp_share_opengraph', 5 );
+		$this->loader->add_action( 'wp_head', $plugin_public, 'bp_share_opengraph', 999 );
 		$this->loader->add_action( 'bp_init', $plugin_public, 'bp_activity_share_button_dis' );
 	}
 
