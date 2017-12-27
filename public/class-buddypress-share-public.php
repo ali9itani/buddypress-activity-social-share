@@ -199,57 +199,57 @@ class Buddypress_Share_Public {
 
 		public function bp_share_opengraph() {
 			global $bp, $post;
-			if ( ( bp_is_active( 'activity' ) && bp_is_current_component( 'activity' ) && !empty( $bp->current_action ) && is_numeric( $bp->current_action ) && bp_is_single_activity() ) || is_single() ) {
+			if ( ( bp_is_active( 'activity' ) && bp_is_current_component( 'activity' ) && !empty( $bp->current_action ) && is_numeric( $bp->current_action ) && bp_is_single_activity() ) ) {
 				$activity_img		 = '';
 				$activity_assets	 = array();
 				$activity_content	 = '';
-				if ( is_single() ) {
-					$activity_permalink	 = get_permalink( $post->ID );
-					$activity_content	 = get_post_field( 'post_content', $post->ID );
-					$title				 = get_the_title( $post->ID );
-					preg_match_all( '/(src|width|height)=("[^"]*")/', $activity_content, $result );
+//				if ( is_single() ) {
+//					$activity_permalink	 = get_permalink( $post->ID );
+//					$activity_content	 = get_post_field( 'post_content', $post->ID );
+//					$title				 = get_the_title( $post->ID );
+//					preg_match_all( '/(src|width|height)=("[^"]*")/', $activity_content, $result );
+//
+//					if ( isset( $result[ 2 ] ) && !empty( $result[ 2 ] ) && isset( $result[ 1 ] ) && !empty( $result[ 1 ] ) ) {
+//						$result2 = array_map( function($i) {
+//							return trim( $i, '"' );
+//						}, $result[ 2 ] );
+//						foreach ( $result[ 1 ] as $key => $result_key ) {
+//							$activity_assets[ $result_key ] = $result2[ $key ];
+//						}
+//					}
+//				} else {
+				$activity_obj		 = new BP_Activity_Activity( $bp->current_action );
+				$activity_permalink	 = bp_activity_get_permalink( $bp->current_action );
+				preg_match_all( '/(src|width|height)=("[^"]*")/', $activity_obj->content, $result );
 
-					if ( isset( $result[ 2 ] ) && !empty( $result[ 2 ] ) && isset( $result[ 1 ] ) && !empty( $result[ 1 ] ) ) {
-						$result2 = array_map( function($i) {
-							return trim( $i, '"' );
-						}, $result[ 2 ] );
-						foreach ( $result[ 1 ] as $key => $result_key ) {
-							$activity_assets[ $result_key ] = $result2[ $key ];
-						}
-					}
-				} else {
-					$activity_obj		 = new BP_Activity_Activity( $bp->current_action );
-					$activity_permalink	 = bp_activity_get_permalink( $bp->current_action );
-					preg_match_all( '/(src|width|height)=("[^"]*")/', $activity_obj->content, $result );
-
-					if ( isset( $result[ 2 ] ) && !empty( $result[ 2 ] ) ) {
-						$result_new = array_map( function($i) {
-							return trim( $i, '"' );
-						}, $result[ 2 ] );
-						foreach ( $result[ 1 ] as $key => $result_key ) {
-							$activity_assets[ $result_key ] = $result_new[ $key ];
-						}
-					}
-					if ( !empty( $activity_obj->action ) ) {
-						$content = $activity_obj->action;
-					} else {
-						$content = $activity_obj->content;
-					}
-
-					$content = explode( '<span', $content );
-					$title	 = strip_tags( ent2ncr( trim( convert_chars( $content[ 0 ] ) ) ) );
-
-					if ( ':' === substr( $title, -1 ) ) {
-						$title = substr( $title, 0, -1 );
-					}
-
-					if ( !empty( $activity_assets[ 'src' ] ) ) {
-						$activity_content	 = explode( '<span>', $activity_obj->content );
-						$activity_content	 = strip_tags( ent2ncr( trim( convert_chars( $activity_content[ 1 ] ) ) ) );
-					} else {
-						$activity_content = $activity_obj->content;
+				if ( isset( $result[ 2 ] ) && !empty( $result[ 2 ] ) ) {
+					$result_new = array_map( function($i) {
+						return trim( $i, '"' );
+					}, $result[ 2 ] );
+					foreach ( $result[ 1 ] as $key => $result_key ) {
+						$activity_assets[ $result_key ] = $result_new[ $key ];
 					}
 				}
+				if ( !empty( $activity_obj->action ) ) {
+					$content = $activity_obj->action;
+				} else {
+					$content = $activity_obj->content;
+				}
+
+				$content = explode( '<span', $content );
+				$title	 = strip_tags( ent2ncr( trim( convert_chars( $content[ 0 ] ) ) ) );
+
+				if ( ':' === substr( $title, -1 ) ) {
+					$title = substr( $title, 0, -1 );
+				}
+
+				if ( !empty( $activity_assets[ 'src' ] ) ) {
+					$activity_content	 = explode( '<span>', $activity_obj->content );
+					$activity_content	 = strip_tags( ent2ncr( trim( convert_chars( $activity_content[ 1 ] ) ) ) );
+				} else {
+					$activity_content = $activity_obj->content;
+				}
+//				}
 //				echo '<pre>';
 //				print_r( $activity_content );
 //				die;
