@@ -2,9 +2,3 @@ checks:
     php:
         code_rating: true
         duplication: true
-build:
-    nodes:
-        analysis:
-            dependencies:
-                before:
-                    - composer require --dev johnpbloch/wordpress
