@@ -3,8 +3,8 @@ Contributors: vapvarun,wbcomdesigns
 Donate link: https://wbcomdesigns.com
 Tags: buddypress,activity,share
 Requires at least: 4.0
-Tested up to: 4.9.1
-Stable tag: 4.0.1
+Tested up to: 4.9.3
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,8 +63,13 @@ Please visit [wbcomdesigns] (http://wbcomdesigns.com/) for any query related to 
 5. The screenshot shows Social Share button & services for logged-out users added by plugin related to BuddyPress Activity Social Share plugin and corresponds to screenshot-5.(png|jpg|jpeg|gif).
 
 == Changelog ==
+
+= 1.0.6 =
+* Fix - Extra content display on single post pages
+
 = 1.0.5 =
 * Fixing FB shares
+
 = 1.0.4 =
 * Fixed missing thumbnail after share activity post.
 * Fix - Remove glitch on click of share icon.
