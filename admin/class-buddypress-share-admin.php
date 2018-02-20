@@ -58,8 +58,10 @@ class Buddypress_Share_Admin {
      *
      * @since    1.0.0
      */
-    public function enqueue_styles() {
-
+    public function enqueue_styles($hook) {
+        if($hook != 'settings_page_buddypress-share') {
+            return;
+         }
         /**
          * This function is provided for demonstration purposes only.
          *
@@ -80,8 +82,10 @@ class Buddypress_Share_Admin {
      *
      * @since    1.0.0
      */
-    public function enqueue_scripts() {
-
+    public function enqueue_scripts($hook) {
+         if($hook != 'settings_page_buddypress-share') {
+            return;
+         }
         /**
          * This function is provided for demonstration purposes only.
          *
