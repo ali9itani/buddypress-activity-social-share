@@ -80,15 +80,20 @@ Please visit [wbcomdesigns] (http://wbcomdesigns.com/) for any query related to 
 * Enhancement - Provide filter to add new social service' in front end.
 * Enhancement - Change view of social share button icons.
 * Enhancement - Added post content for activity share on facebook and google plus.
+
 = 1.0.3 =
 * Fix - Translation Fixes
 * Enhancement - Enable sharing for logged out users
 * Enhancement - Allow to add more social icons
+
 = 1.0.2 =
 * Third Version.
+
 = 1.0.1 =
 * Second Version.
+
 = 1.0.0 =
 * first version.
+
 = 1.0.0 =
 * JS fixes for BP 2.7.
