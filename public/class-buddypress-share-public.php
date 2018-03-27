@@ -130,7 +130,9 @@ class Buddypress_Share_Public {
 		}
 		?>
 		<span class="bp-share-btn">
-			<a class="button item-button bp-secondary-action bp-share-button" rel="nofollow"><?php _e( "$share_button_text", BP_SHARE ); ?></a>
+			<a class="button item-button bp-secondary-action bp-share-button" rel="nofollow">
+			<i class="fa fa-share"></i>
+			<?php _e( "$share_button_text", BP_SHARE ); ?></a>
 		</span>
 		</div>
 		<div class="service-buttons <?php echo $activity_type ?>" style="display: none;">
